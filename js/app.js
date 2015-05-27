@@ -1,3 +1,1 @@
-require('angular');
-
-var app = angular.module('bottomDrawer', []);
+var bottomDrawerApp = angular.module('bottomDrawer', []);
