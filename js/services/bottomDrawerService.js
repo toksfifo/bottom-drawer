@@ -3,22 +3,21 @@ bottomDrawerApp.factory('bottomDrawerService', [function() {
 	var bottomDrawerService = {
 		isOpen: false,
 		options: [],
-		icons: [],
+		hideCancel: false,
 		open: open,
 		close: close
 	};
 
 	return bottomDrawerService;
 
-	function open(newOptions, newIcons) {
+	function open(newOptions, boolHideCancel) {
 		bottomDrawerService.options = newOptions;
-		bottomDrawerService.icons = newIcons || [];
+		bottomDrawerService.hideCancel = boolHideCancel || false;
 		bottomDrawerService.isOpen = true;
 	}
 
 	function close() {
 		bottomDrawerService.options = [];
-		bottomDrawerService.icons = [];
 		bottomDrawerService.isOpen = false;
 	}
 

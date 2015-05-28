@@ -1,44 +1,29 @@
-var bottomDrawerApp = angular.module('bottomDrawer', []);
-bottomDrawerApp.factory('bottomDrawerService', [function() {
-
-	var bottomDrawerService = {
-		isOpen: false,
-		options: [],
-		icons: [],
-		open: open,
-		close: close
-	};
-
-	return bottomDrawerService;
-
-	function open(newOptions, newIcons) {
-		bottomDrawerService.options = newOptions;
-		bottomDrawerService.icons = newIcons || [];
-		bottomDrawerService.isOpen = true;
-	}
-
-	function close() {
-		bottomDrawerService.options = [];
-		bottomDrawerService.icons = [];
-		bottomDrawerService.isOpen = false;
-	}
-
-}]);
+var bottomDrawerApp = angular.module('bottomDrawer', ['ngAnimate']);
 bottomDrawerApp.directive('bottomDrawerDirective', ['bottomDrawerService', function(bottomDrawerService) {
 
 	return {
 		restrict: 'E',
-		scope: {},
-		template: '<div ng-if="bottomDrawerService.isOpen" ng-init="init()">
+		scope: true,
+		template: '<div ng-if="bottomDrawerService.isOpen">
 
 	<div class="bdDarkScreen" ng-click="bottomDrawerService.close()"></div>
 
-	<div class="bdContainer">
-		<li class="bdItem" ng-repeat="option in bottomDrawerService.options">
-			<i ng-class="bottomDrawerService.icons[$index]"></i>
-			<span>{{ option }}</span>
+	<div class="bdContainer" ng-cloak>
+		<div class="bdContainer-scroll">
+			<li class="bdItem" 
+				ng-repeat="option in bottomDrawerService.options"
+				ng-click="option.fn(); bottomDrawerService.close()">
+				<i ng-class="option.icon"></i>
+				<span class="bdItem-text" 
+					ng-class="{\'is-padded\': bottomDrawerService.icons[$index]}">{{ option.text }}</span>
+			</li>
+		</div>
+		
+		<li class="bdItem bdItem--cancel" 
+			ng-click="bottomDrawerService.close()" 
+			ng-if="!bottomDrawerService.hideCancel">
+			<span class="bdItem-text">Cancel</span>
 		</li>
-		<li class="bdItem" ng-click="bottomDrawerService.close()">Cancel</li>
 	</div>
 
 </div>',
@@ -49,6 +34,30 @@ bottomDrawerApp.directive('bottomDrawerDirective', ['bottomDrawerService', funct
 
 		scope.bottomDrawerService = bottomDrawerService;
 
+	}
+
+}]);
+bottomDrawerApp.factory('bottomDrawerService', [function() {
+
+	var bottomDrawerService = {
+		isOpen: false,
+		options: [],
+		hideCancel: false,
+		open: open,
+		close: close
+	};
+
+	return bottomDrawerService;
+
+	function open(newOptions, boolHideCancel) {
+		bottomDrawerService.options = newOptions;
+		bottomDrawerService.hideCancel = boolHideCancel || false;
+		bottomDrawerService.isOpen = true;
+	}
+
+	function close() {
+		bottomDrawerService.options = [];
+		bottomDrawerService.isOpen = false;
 	}
 
 }]);

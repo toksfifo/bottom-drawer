@@ -1,1 +1,1 @@
-var bottomDrawerApp = angular.module('bottomDrawer', []);
+var bottomDrawerApp = angular.module('bottomDrawer', ['ngAnimate']);
