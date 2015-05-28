@@ -1,11 +1,18 @@
-<div class="bdDarkScreen if-animate" ng-if="bottomDrawerService.isOpen" ng-click="bottomDrawerService.close()"></div>
+<!-- transparent dark screen -->
+<div class="bdDarkScreen" 
+	ng-if="bottomDrawerService.isOpen" 
+	ng-click="bottomDrawerService.close()"></div>
 
-<div class="bdContainer if-animate" ng-if="bottomDrawerService.isOpen" ng-cloak>
+<!-- drawer -->
+<div class="bdContainer" ng-if="bottomDrawerService.isOpen" ng-cloak>
 	<div class="bdContainer-scroll">
 		<li class="bdItem" 
 			ng-repeat="option in bottomDrawerService.options"
 			ng-click="callNextFunction(option)">
+
+			<!-- for font-awesome icons -->
 			<i ng-class="option.icon"></i>
+			
 			<span class="bdItem-text" 
 				ng-class="{\'is-padded\': bottomDrawerService.icons[$index]}">{{ option.text }}</span>
 		</li>
