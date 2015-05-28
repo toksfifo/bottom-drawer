@@ -17,8 +17,8 @@ bottomDrawerApp.factory('bottomDrawerService', [function() {
 	}
 
 	function close() {
-		bottomDrawerService.options = [];
 		bottomDrawerService.isOpen = false;
+		// bottomDrawerService.options = [];
 	}
 
 }]);

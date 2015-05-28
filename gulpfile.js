@@ -1,7 +1,6 @@
-// Include gulp
 var gulp = require('gulp'); 
 
-// Plugins
+// plugins
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
@@ -9,7 +8,7 @@ var less = require('gulp-less');
 var minifyCss = require('gulp-minify-css');
 var autoprefixer = require('gulp-autoprefixer');
 
-// Concatenate & Minify JS
+// concatenate, minify js
 gulp.task('js', function() {
     return gulp.src('js/**/*.js')
         .pipe(concat('bottomDrawer.js'))
@@ -19,6 +18,7 @@ gulp.task('js', function() {
         .pipe(gulp.dest('dist'));
 });
 
+// less compile, autoprefix, minify css
 gulp.task('less', function() {
     return gulp.src('css/style.less')
         .pipe(less())
@@ -30,11 +30,11 @@ gulp.task('less', function() {
         .pipe(gulp.dest('dist'));
 });
 
-// Watch Files For Changes
+// watch files for changes
 gulp.task('watch', function() {
     gulp.watch('js/**/*.js', ['js']);
     gulp.watch('css/*.less', ['less']);
 });
 
-// Default Task
+// default task
 gulp.task('default', ['js', 'less']);

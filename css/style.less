@@ -3,6 +3,8 @@
 @color-shadowBdContainer: @color-backgroundDarkScreen;
 @color-text: rgba(0, 0, 0, 1.0);
 @height-bdItem: 45px;
+@transition-darkScreen: all 0.25s ease-in-out;
+@transition-containter: @transition-darkScreen;
 
 .bdDarkScreen {
 	position: fixed;
@@ -15,26 +17,26 @@
 	cursor: pointer;
 }
 
-// .bdDarkScreen.ng-enter,
-// .bdDarkScreen.ng-leave {
-// 	transition: 1s linear all;
-// }
+.bdDarkScreen.ng-enter,
+.bdDarkScreen.ng-leave {
+	transition: @transition-darkScreen;
+}
 
-// .bdDarkScreen.ng-enter {
-// 	opacity: 0;
-// }
+.bdDarkScreen.ng-enter {
+	opacity: 0;
+}
 
-// .bdDarkScreen.ng-enter.ng-enter-active {
-// 	opacity: 1;
-// }
+.bdDarkScreen.ng-enter.ng-enter-active {
+	opacity: 1;
+}
 
-// .bdDarkScreen.ng-leave {
-// 	opacity: 1;
-// }
+.bdDarkScreen.ng-leave {
+	opacity: 1;
+}
 
-// .bdDarkScreen.ng-leave.ng-leave-active {
-// 	opacity: 0;
-// }
+.bdDarkScreen.ng-leave.ng-leave-active {
+	opacity: 0;
+}
 
 .bdContainer {
 	position: fixed;
@@ -44,6 +46,27 @@
 	background-color: @color-backgroundContainer;
 	z-index: 1002;
 	box-shadow: 0px -6px 16px 0px @color-shadowBdContainer;
+}
+
+.bdContainer.ng-enter,
+.bdContainer.ng-leave {
+	transition: @transition-containter
+}
+
+.bdContainer.ng-enter {
+	transform: translateY(100%);
+}
+
+.bdContainer.ng-enter.ng-enter-active {
+	transform: translateY(0%);
+}
+
+.bdContainer.ng-leave {
+	transform: translateY(0%);
+}
+
+.bdContainer.ng-leave.ng-leave-active {
+	transform: translateY(100%);
 }
 
 .bdContainer-scroll {
