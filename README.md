@@ -38,31 +38,31 @@ app.controller('YourCtrl', ['$scope', 'bottomDrawerService', function($scope, bo
   // open drawer with individual items (objects) in array
   bottomDrawerService.open([{
     text: 'Add a photo', // text displayed in drawer
-    icon: 'fa fa-file-photo-o', // OPTIONAL Font Awesome icon (class) to precede text
+    icon: 'fa fa-file-photo-o fa-fw', // OPTIONAL Font Awesome icon (class) to precede text (strongly consider adding the fixed width option: `fa-fw`)
     fn: function() { // OPTIONAL function to be called on item tap
       $scope.addPhoto();
     }
   }, {
     text: 'Save offline map',
-    icon: 'fa fa-map-marker',
+    icon: 'fa fa-map-marker fa-fw',
     fn: function() {
       console.log('saving map :)');
       $scope.saveOfflineMap(currentMap);
     }
   }, {
     text: 'Share', 
-    icon: 'fa fa-share-alt', 
+    icon: 'fa fa-share-alt fa-fw', 
     recursive: true, // OPTIONAL recursive
     fn: function() {
       bottomDrawerService.open([{
         text: 'Facebook',
-        icon: 'fa fa-facebook',
+        icon: 'fa fa-facebook fa-fw',
         fn: function() {
           $scope.share('facebook');
         }
       }, {
         text: 'Twitter',
-        icon: 'fa fa-twitter',
+        icon: 'fa fa-twitter fa-fw',
         fn: function() {
           $scope.share('twitter');
         }
