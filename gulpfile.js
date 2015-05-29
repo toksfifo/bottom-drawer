@@ -10,7 +10,7 @@ var autoprefixer = require('gulp-autoprefixer');
 
 // concatenate, minify js
 gulp.task('js', function() {
-    return gulp.src('js/**/*.js')
+    return gulp.src('src/**/*.js')
         .pipe(concat('bottomDrawer.js'))
         .pipe(gulp.dest('dist'))
         .pipe(rename('bottomDrawer.min.js'))
@@ -20,7 +20,7 @@ gulp.task('js', function() {
 
 // less compile, autoprefix, minify css
 gulp.task('less', function() {
-    return gulp.src('css/style.less')
+    return gulp.src('src/bottomDrawer/bottomDrawer.less')
         .pipe(less())
         .pipe(autoprefixer())
         .pipe(rename('bottomDrawer.css'))
@@ -32,8 +32,8 @@ gulp.task('less', function() {
 
 // watch files for changes
 gulp.task('watch', function() {
-    gulp.watch('js/**/*.js', ['js']);
-    gulp.watch('css/*.less', ['less']);
+    gulp.watch('src/**/*.js', ['js']);
+    gulp.watch('src/**/*.less', ['less']);
 });
 
 // default task

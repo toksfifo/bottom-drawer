@@ -6,7 +6,7 @@ bottomDrawerApp.directive('bottomDrawerDirective', ['$timeout', 'bottomDrawerSer
 		scope: true,
 		link: link,
 
-		// template can also be found at templates/bottomDrawerTeplate.html
+		// template can also be found in bottomDrawerTeplate.html
 		template: 
 			'<div class="bdDarkScreen" ng-if="bottomDrawerService.isOpen" ng-click="bottomDrawerService.close()"></div>' +
 			'<div class="bdContainer" ng-if="bottomDrawerService.isOpen" ng-cloak>' + 

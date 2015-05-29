@@ -8,9 +8,9 @@ Angular JS module for bottom drawer; particularly useful for mobile.
 * Allows for recursive drawers, i.e. tapping one drawer item closes the current drawer and opens another. To use, include `recursive: true` in the item's object and call `bottomDrawerService.open()` in the item's `fn`. See [Usage](#usage).
 
 ##<a name="usage">Usage</a>
-Include the following files in your HTML (consider concatenating into a `lib.js` and `lib.css` for performace):
-* `dist/bottomDrawer.min.js`
-* `dist/bottomDrawer.min.css`
+Include the following files in your HTML:
+* `bottomDrawer.min.js`
+* `bottomDrawer.min.css`
 
 Note: `bottomDrawer.min.css` comes with the following default styles (feel free to edit for personal use):
 * `background-color` (transparent dark screen when drawer is present): `rgba(0, 0, 0, 0.4)`
@@ -33,6 +33,7 @@ JS:
 // inject bottom-drawer module
 var app = angular.module('yourApp', ['bottomDrawer']);
 
+// inject bottom-drawer service
 app.controller('YourCtrl', ['$scope', 'bottomDrawerService', function($scope, bottomDrawerService) {
   
   // open drawer with individual items (objects) in array
