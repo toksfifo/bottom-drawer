@@ -39,7 +39,7 @@ app.controller('YourCtrl', ['$scope', 'bottomDrawerService', function($scope, bo
   // open drawer with individual items (objects) in array
   bottomDrawerService.open([{
     text: 'Add a photo', // text displayed in drawer
-    icon: 'fa fa-file-photo-o fa-fw', // OPTIONAL Font Awesome icon (class) to precede text (strongly consider adding the fixed width option: `fa-fw`)
+    icon: 'fa fa-file-photo-o fa-fw', // OPTIONAL Font Awesome icon (class) to precede text (strongly consider adding the fixed width option: fa-fw)
     fn: function() { // OPTIONAL function to be called on item tap
       $scope.addPhoto();
     }
