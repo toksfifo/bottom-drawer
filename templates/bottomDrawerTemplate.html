@@ -1,26 +1,21 @@
+<!-- note: this file is for editing purposes only. it doesn't actually get used (copied to bottomDrawerDirective.js) -->
+
 <!-- transparent dark screen -->
-<div class="bdDarkScreen" 
-	ng-if="bottomDrawerService.isOpen" 
-	ng-click="bottomDrawerService.close()"></div>
+<div class="bdDarkScreen" ng-if="bottomDrawerService.isOpen" ng-click="bottomDrawerService.close()"></div>
 
 <!-- drawer -->
 <div class="bdContainer" ng-if="bottomDrawerService.isOpen" ng-cloak>
 	<div class="bdContainer-scroll">
-		<li class="bdItem" 
-			ng-repeat="option in bottomDrawerService.options"
-			ng-click="callNextFunction(option)">
+		<li class="bdItem" ng-repeat="option in bottomDrawerService.options" ng-click="callNextFunction(option)">
 
 			<!-- for font-awesome icons -->
 			<i ng-class="option.icon"></i>
 			
-			<span class="bdItem-text" 
-				ng-class="{\'is-padded\': bottomDrawerService.icons[$index]}">{{ option.text }}</span>
+			<span class="bdItem-text" ng-class="{\'is-padded\': bottomDrawerService.icons[$index]}">{{ option.text }}</span>
 		</li>
 	</div>
 	
-	<li class="bdItem bdItem--cancel" 
-		ng-click="bottomDrawerService.close()" 
-		ng-if="!bottomDrawerService.hideCancel">
+	<li class="bdItem bdItem--cancel" ng-click="bottomDrawerService.close()" ng-if="!bottomDrawerService.hideCancel">
 		<span class="bdItem-text">Cancel</span>
 	</li>
 </div>
