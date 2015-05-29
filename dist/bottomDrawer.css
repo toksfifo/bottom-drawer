@@ -14,16 +14,16 @@
           transition: all 0.25s ease-in-out;
 }
 .bdDarkScreen.ng-enter {
-  opacity: 0;
+  background-color: rgba(0, 0, 0, 0);
 }
 .bdDarkScreen.ng-enter.ng-enter-active {
-  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 .bdDarkScreen.ng-leave {
-  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 .bdDarkScreen.ng-leave.ng-leave-active {
-  opacity: 0;
+  background-color: rgba(0, 0, 0, 0);
 }
 .bdContainer {
   position: fixed;
