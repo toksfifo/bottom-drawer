@@ -44,7 +44,9 @@ bottomDrawerApp.directive('bottomDrawerDirective', ['$timeout', 'bottomDrawerSer
 				if (option.recursive) {
 
 					// wait for drawer to close (and some small delay) before opening new drawer
-					$timeout(option.fn, timeAnimation + (0.1 * 1000));
+					$timeout(function() {
+						option.fn();
+					}, timeAnimation + (0.1 * 1000));
 				} else {
 					option.fn();
 				}
