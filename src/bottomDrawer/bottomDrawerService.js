@@ -1,4 +1,8 @@
-bottomDrawerApp.factory('bottomDrawerService', [function() {
+angular
+	.module('bottomDrawer')
+	.factory('bottomDrawerService', [bottomDrawerService]);
+
+function bottomDrawerService() {
 
 	var bottomDrawerService = {
 		isOpen: false,
@@ -14,7 +18,6 @@ bottomDrawerApp.factory('bottomDrawerService', [function() {
 	 * open drawer
 	 * @param  {Array} newOptions: objects representing each drawer item
 	 * @param  {Boolean} boolHideCancel: indicated whether "Cancel" item is shown
-	 * @return {none}
 	 */
 	function open(newOptions, boolHideCancel) {
 		bottomDrawerService.options = newOptions;
@@ -24,10 +27,9 @@ bottomDrawerApp.factory('bottomDrawerService', [function() {
 
 	/**
 	 * close drawer
-	 * @return {none}
 	 */
 	function close() {
 		bottomDrawerService.isOpen = false;
 	}
 
-}]);
+}

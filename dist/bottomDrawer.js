@@ -1,5 +1,13 @@
-var bottomDrawerApp = angular.module('bottomDrawer', ['ngAnimate']);
-bottomDrawerApp.directive('bottomDrawerDirective', ['$timeout', 'bottomDrawerService', function($timeout, bottomDrawerService) {
+angular.module('bottomDrawer', [
+	'ngAnimate'
+]);
+
+// demo: https://jsfiddle.net/toksfifo/uyr98fL2/
+angular
+	.module('bottomDrawer')
+	.directive('bottomDrawerDirective', ['$timeout', 'bottomDrawerService', bottomDrawerDirective]);
+
+function bottomDrawerDirective($timeout, bottomDrawerService) {
 
 	return {
 		restrict: 'E',
@@ -11,14 +19,14 @@ bottomDrawerApp.directive('bottomDrawerDirective', ['$timeout', 'bottomDrawerSer
 			'<div class="bdDarkScreen" ng-if="bottomDrawerService.isOpen" ng-click="bottomDrawerService.close()"></div>' +
 			'<div class="bdContainer" ng-if="bottomDrawerService.isOpen" ng-cloak>' + 
 				'<div class="bdContainer-scroll">' + 
-					'<li class="bdItem" ng-repeat="option in bottomDrawerService.options" ng-click="callNextFunction(option)">' + 
+					'<button class="bdItem" ng-repeat="option in bottomDrawerService.options" ng-click="callNextFunction(option)">' + 
 						'<i ng-class="option.icon"></i>' + 
-						'<span class="bdItem-text" ng-class="{\'is-padded\': option.icon}">{{ option.text }}</span>' + 
-					'</li>' + 
+						'<span class="bdItem-text" ng-class="{\'is-padded\': option.icon}">{{ \:\:option.text }}</span>' + 
+					'</button>' + 
 				'</div>' +
-				'<li class="bdItem bdItem--cancel" ng-click="bottomDrawerService.close()" ng-if="!bottomDrawerService.hideCancel">' + 
+				'<button class="bdItem bdItem--cancel" ng-click="bottomDrawerService.close()" ng-if="!bottomDrawerService.hideCancel">' + 
 					'<span class="bdItem-text">Cancel</span>' + 
-				'</li>' + 
+				'</button>' + 
 			'</div>'
 	};
 
@@ -30,11 +38,10 @@ bottomDrawerApp.directive('bottomDrawerDirective', ['$timeout', 'bottomDrawerSer
 		/**
 		 * optionally calls a new function if user clicks on a drawer item
 		 * @param  {Object} option: current drawer item (clicked)
-		 * @return {none}
 		 */
 		function callNextFunction(option) {
 
-			// time for closing (or opening) drawer from CSS
+			// time for closing (or opening) drawer (should match CSS)
 			var timeAnimation = 0.25 * 1000;
 
 			// 1st, close the drawer
@@ -56,8 +63,12 @@ bottomDrawerApp.directive('bottomDrawerDirective', ['$timeout', 'bottomDrawerSer
 
 	}
 
-}]);
-bottomDrawerApp.factory('bottomDrawerService', [function() {
+}
+angular
+	.module('bottomDrawer')
+	.factory('bottomDrawerService', [bottomDrawerService]);
+
+function bottomDrawerService() {
 
 	var bottomDrawerService = {
 		isOpen: false,
@@ -73,7 +84,6 @@ bottomDrawerApp.factory('bottomDrawerService', [function() {
 	 * open drawer
 	 * @param  {Array} newOptions: objects representing each drawer item
 	 * @param  {Boolean} boolHideCancel: indicated whether "Cancel" item is shown
-	 * @return {none}
 	 */
 	function open(newOptions, boolHideCancel) {
 		bottomDrawerService.options = newOptions;
@@ -83,10 +93,9 @@ bottomDrawerApp.factory('bottomDrawerService', [function() {
 
 	/**
 	 * close drawer
-	 * @return {none}
 	 */
 	function close() {
 		bottomDrawerService.isOpen = false;
 	}
 
-}]);
+}

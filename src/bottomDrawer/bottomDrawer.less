@@ -1,14 +1,16 @@
 @color-backgroundContainer: rgba(255, 255, 255, 1.0);
-@color-backgroundDarkScreen: rgba(0, 0, 0, 0.4);
-@color-shadowContainer: @color-backgroundDarkScreen;
 @color-text: rgba(0, 0, 0, 1.0);
+@color-backgroundDarkScreen: fadeout(@color-text, 60%);
+@color-shadowContainer: @color-backgroundDarkScreen;
 @height-bdItem: 45px;
 @transition-darkScreen: all 0.25s ease-in-out;
 @transition-containter: @transition-darkScreen;
+@z-index-darkScreen: 1000;
+@box-shadow-container: 0px -6px 16px 0px @color-shadowContainer;
 
 .bdDarkScreen {
 	position: fixed;
-	z-index: 1002; // arbitrary for now
+	z-index: @z-index-darkScreen;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -44,8 +46,8 @@
 	left: 0;
 	width: 100%;
 	background-color: @color-backgroundContainer;
-	z-index: 1002;
-	box-shadow: 0px -6px 16px 0px @color-shadowContainer;
+	z-index: @z-index-darkScreen;
+	box-shadow: @box-shadow-container;
 }
 
 .bdContainer.ng-enter,
@@ -60,12 +62,12 @@
 
 .bdContainer.ng-enter.ng-enter-active {
 	transform: translateY(0%);
-	box-shadow: 0px -6px 16px 0px @color-shadowContainer;
+	box-shadow: @box-shadow-container;
 }
 
 .bdContainer.ng-leave {
 	transform: translateY(0%);
-	box-shadow: 0px -6px 16px 0px @color-shadowContainer;
+	box-shadow: @box-shadow-container;
 }
 
 .bdContainer.ng-leave.ng-leave-active {
@@ -74,7 +76,7 @@
 }
 
 .bdContainer-scroll {
-	max-height: @height-bdItem * 5.5; // additional .5 indicates scroll ability
+	max-height: @height-bdItem * 5.5; // additional .5 affords scroll ability
 	overflow-y: scroll;
 }
 
@@ -84,8 +86,18 @@
 	line-height: @height-bdItem;
 	color: @color-text;
 	font-size: 16px;
-	padding-left: 16px;
+	padding: 0 0 0 16px;
 	cursor: pointer;
+	box-sizing: border-box;
+	background-color: @color-backgroundContainer;
+	border: none;
+	text-align: left;
+	&:active {
+		background-color: rgba(240, 240, 240, 1.0);
+	}
+	&:focus {
+		outline: 0;
+	}
 }
 
 .bdItem--cancel {
