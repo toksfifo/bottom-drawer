@@ -1,6 +1,8 @@
 # bottom-drawer
 AngularJS module for bottom drawer; particularly useful for mobile.
 
+![](https://github.com/toksfifo/bottom-drawer/blob/master/bottomDrawer.gif)
+
 ##<a name="features">Features</a>
 * Drawer closes when the backdrop is tapped or when "Cancel" (included by default, is tapped). To remove the "Cancel" item, pass in `true` as the 2nd parameter to `bottomDrawerService.open()` (default is `false`).
 * Supports icons preceding text (from <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank"> Font Awesome</a> or any font icon set). Include the class name as the item's `icon`.
