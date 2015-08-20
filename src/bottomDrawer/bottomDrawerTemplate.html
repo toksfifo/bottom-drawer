@@ -6,16 +6,16 @@
 <!-- drawer -->
 <div class="bdContainer" ng-if="bottomDrawerService.isOpen" ng-cloak>
 	<div class="bdContainer-scroll">
-		<li class="bdItem" ng-repeat="option in bottomDrawerService.options" ng-click="callNextFunction(option)">
+		<button class="bdItem" ng-repeat="option in bottomDrawerService.options" ng-click="callNextFunction(option)">
 
-			<!-- for font-awesome icons -->
+			<!-- for font icons -->
 			<i ng-class="option.icon"></i>
 			
-			<span class="bdItem-text" ng-class="{\'is-padded\': option.icon}">{{ option.text }}</span>
-		</li>
+			<span class="bdItem-text" ng-class="{\'is-padded\': option.icon}">{{ ::option.text }}</span>
+		</button>
 	</div>
 	
-	<li class="bdItem bdItem--cancel" ng-click="bottomDrawerService.close()" ng-if="!bottomDrawerService.hideCancel">
+	<button class="bdItem bdItem--cancel" ng-click="bottomDrawerService.close()" ng-if="!bottomDrawerService.hideCancel">
 		<span class="bdItem-text">Cancel</span>
-	</li>
+	</button>
 </div>

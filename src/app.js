@@ -1,1 +1,5 @@
-var bottomDrawerApp = angular.module('bottomDrawer', ['ngAnimate']);
+angular.module('bottomDrawer', [
+	'ngAnimate'
+]);
+
+// demo: https://jsfiddle.net/toksfifo/uyr98fL2/
